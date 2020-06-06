@@ -5,7 +5,8 @@ const Employee = require('./Employee');
 class Manager extends Employee {
     constructor(officeNumber) {
         this.officeNumber = officeNumber;
-    };
+    }; // also need fields for employee 
+    // call super function to update value 
     getRole() {
         return 'Manager';
     };
