@@ -15,9 +15,9 @@ const render = require("./lib/htmlRenderer");
 // and to create objects for each team member (using the correct classes as blueprints!)
 const questions = [
     {
-        type: "input",
-        name: "userName",
-        message: " Please Enter User Name "
+        type: "input",// multiple selection?? 
+        name: "Type of Employee",
+        message: " Please Enter "
     },
 ]
 inquirer
@@ -25,6 +25,15 @@ inquirer
     .then(answers => {
 
         console.log(answers);
+
+        const Elias = new Engineer("gitHub")
+
+        //user wants to create one manager and two intern and two engineers. lets assume what you have is an array of objects. the data returned would be name, id, email or different properties classes. once data is provided take it and inside the inquirer code and create one employee from .then create intern objects. 
+
+        // based on user input creat new object. saved in an array once object is saved then creat html. 
+        //1 ask info
+        //create and save file  
+        // hint 
     })
     .catch(error => {
         if (error.isTtyError) {
@@ -34,6 +43,12 @@ inquirer
         }
     });
 // creat new instances of classes with new data
+const manager1 = new Manager("Diana", 11, "diana@gaeacoop.org", "D342");
+console.log(manager1);
+const intern1 = new Intern("Diana", 11, "diana@gaeacoop.org", "UNH");
+console.log(manager1);
+const engineer1 = new Engineer("Diana", 11, "diana@gaeacoop.org", "diana603");
+console.log(manager1, intern1, engineer1);
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
