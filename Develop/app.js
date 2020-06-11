@@ -7,6 +7,9 @@ const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output"); ``
 const outputPath = path.join(OUTPUT_DIR, "team.html");
+console.log(OUTPUT_DIR);
+console.log(outputPath);
+
 
 const render = require("./lib/htmlRenderer");
 
@@ -54,11 +57,27 @@ console.log(manager1, intern1, engineer1);
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
+const employees = [manager1, intern1, engineer1];
+const renderHTML = render(employees);
+console.log(renderHTML);
+
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
+// does not.  
+// checking if output folder exist if not it will make one.// 
+if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR);
+}
+//writes renderedHTML to a file in outputpath
+fs.writeFile(outputPath, renderHTML, (err) => {
+    if (err) {
+        throw err;
+    } else {
+        console.log("file created");
+    }
+});
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
